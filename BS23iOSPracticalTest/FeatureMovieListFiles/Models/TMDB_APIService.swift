@@ -7,9 +7,9 @@
 
 import Foundation
 
-class TMDBAPIService{
+class TMDB_APIService: APIService{
     
-    static let shared = TMDBAPIService()
+    static let shared = TMDB_APIService()
     
     func fetchDefaultMovies() async throws -> [MovieListItemViewModel]{
         return try await search(with: "Marvel")
