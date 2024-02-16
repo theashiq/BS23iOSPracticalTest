@@ -11,9 +11,13 @@ class TMDBAPIService{
     
     static let shared = TMDBAPIService()
     
+    func fetchDefaultMovies() async throws -> [MovieListItemViewModel]{
+        return try await search(with: "Marvel")
+    }
+    
     func search(with key: String) async throws -> [MovieListItemViewModel] {
         
-        let url = URL(string: "https://api.themoviedb.org/3/search/movie?api_key=38e61227f85671163c275f9bd95a8803&query="+key)
+        let url = URL(string: Constants.TMDBSearchUrl+key)
         
         let responseData = try await URLSession.shared.data(for:  URLRequest(url: url!)).0
         
