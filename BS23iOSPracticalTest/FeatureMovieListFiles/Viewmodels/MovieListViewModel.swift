@@ -10,10 +10,14 @@ import Foundation
 class MovieListViewModel: ObservableObject{
     @Published var movies: [MovieListItemViewModel] = []
     
-    
     func fetchMovies(){
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2){
-            self.movies = MovieListItemViewModel.dummies
+        Task{
+            do{
+                let fetchedMovies = try await TMDBAPIService.shared.fetch()
+                DispatchQueue.main.async{
+                    self.movies = fetchedMovies
+                }
+            }
         }
     }
     
