@@ -14,6 +14,14 @@ struct MovieListItemViewModel: Identifiable {
     let posterImageUrl: String
 }
 
+extension MovieListItemViewModel{
+    init(movie: TMDBMovie){
+        title = movie.originalTitle ?? "Unknown Movie Title"
+        description = movie.overview ?? ""
+        posterImageUrl = movie.posterUrl
+    }
+}
+
 
 extension MovieListItemViewModel{
     static var dummies: [MovieListItemViewModel]{

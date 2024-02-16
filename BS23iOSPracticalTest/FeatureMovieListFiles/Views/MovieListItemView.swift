@@ -13,23 +13,32 @@ struct MovieListItemView: View {
     var body: some View {
         HStack {
             
-            Image(systemName: "popcorn")
-                .renderingMode(.template)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(maxWidth: 60)
+            imageView
             
             VStack(alignment: .leading){
                 Text(viewModel.title)
                     .font(.headline)
                     .lineLimit(1)
-                    .padding(.vertical, 5)
                 
                 Text(viewModel.description)
                     .font(.subheadline)
                 Spacer()
             }
         }
+    }
+    
+    private var imageView : some View {
+        AsyncImage(url: URL(string: viewModel.posterImageUrl)) { image in
+            image
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+        } placeholder: {
+            Image(systemName: "popcorn")
+                .renderingMode(.template)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+        }
+        .frame(maxWidth: 60)
     }
 }
 

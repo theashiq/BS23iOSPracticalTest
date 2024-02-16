@@ -15,6 +15,8 @@
 		1ABFD0EC2B7F15B600A678B9 /* MovieListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ABFD0EB2B7F15B600A678B9 /* MovieListViewModel.swift */; };
 		1ABFD0EE2B7F15CB00A678B9 /* MovieListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ABFD0ED2B7F15CB00A678B9 /* MovieListItemView.swift */; };
 		1ABFD0F02B7F15DE00A678B9 /* MovieListItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ABFD0EF2B7F15DE00A678B9 /* MovieListItemViewModel.swift */; };
+		1ABFD1192B7F1C7B00A678B9 /* TMDBModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ABFD1182B7F1C7B00A678B9 /* TMDBModels.swift */; };
+		1ABFD11D2B7F1DAA00A678B9 /* TMDBAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ABFD11C2B7F1DAA00A678B9 /* TMDBAPIService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +29,8 @@
 		1ABFD0EB2B7F15B600A678B9 /* MovieListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewModel.swift; sourceTree = "<group>"; };
 		1ABFD0ED2B7F15CB00A678B9 /* MovieListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListItemView.swift; sourceTree = "<group>"; };
 		1ABFD0EF2B7F15DE00A678B9 /* MovieListItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListItemViewModel.swift; sourceTree = "<group>"; };
+		1ABFD1182B7F1C7B00A678B9 /* TMDBModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBModels.swift; sourceTree = "<group>"; };
+		1ABFD11C2B7F1DAA00A678B9 /* TMDBAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBAPIService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +103,8 @@
 		1ABFD0E62B7F153900A678B9 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				1ABFD1182B7F1C7B00A678B9 /* TMDBModels.swift */,
+				1ABFD11C2B7F1DAA00A678B9 /* TMDBAPIService.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -190,10 +196,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				1ABFD0EE2B7F15CB00A678B9 /* MovieListItemView.swift in Sources */,
+				1ABFD11D2B7F1DAA00A678B9 /* TMDBAPIService.swift in Sources */,
 				1ABFD0D92B7F147800A678B9 /* ContentView.swift in Sources */,
 				1ABFD0D72B7F147800A678B9 /* BS23iOSPracticalTestApp.swift in Sources */,
 				1ABFD0EA2B7F15A100A678B9 /* MovieListView.swift in Sources */,
 				1ABFD0F02B7F15DE00A678B9 /* MovieListItemViewModel.swift in Sources */,
+				1ABFD1192B7F1C7B00A678B9 /* TMDBModels.swift in Sources */,
 				1ABFD0EC2B7F15B600A678B9 /* MovieListViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
