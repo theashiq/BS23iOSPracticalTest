@@ -12,11 +12,11 @@ struct TMDBResponse: Decodable {
 }
 
 struct TMDBMovie: Decodable{
-    let originalTitle: String?  //original_title
-    let posterPath: String?     //poster_path
-    let overview: String?       //overview
+    let title: String?
+    let posterPath: String?
+    let overview: String?
     
     var posterUrl: String{
-        "https://image.tmdb.org/t/p/w500/\(posterPath ?? "")"
+        "\(Constants.TMDBPosterBaseUrl)\(posterPath ?? "")"
     }
 }

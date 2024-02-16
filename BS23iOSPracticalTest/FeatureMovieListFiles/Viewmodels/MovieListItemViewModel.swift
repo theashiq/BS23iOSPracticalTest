@@ -16,7 +16,7 @@ struct MovieListItemViewModel: Identifiable {
 
 extension MovieListItemViewModel{
     init(movie: TMDBMovie){
-        title = movie.originalTitle ?? "Unknown Movie Title"
+        title = movie.title ?? "Unknown Movie Title"
         description = movie.overview ?? ""
         posterImageUrl = movie.posterUrl
     }
