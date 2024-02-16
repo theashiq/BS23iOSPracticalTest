@@ -30,11 +30,11 @@ struct MovieListView: View {
                     Text("No Results for \(viewModel.searchKeyword)")
                         .font(.title)
                 }
-            } 
+            }
         }
     }
 }
 
-#Preview {
-    MovieListView(viewModel: MovieListViewModel())
-}
+//#Preview {
+//    MovieListView(viewModel: MovieListViewModel())
+//}

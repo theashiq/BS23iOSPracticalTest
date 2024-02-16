@@ -24,10 +24,16 @@ class MovieListViewModel: ObservableObject{
     
     private var searchWork: DispatchWorkItem?
     
+    private var api: APIService
+    
+    init(api: APIService) {
+        self.api = api
+    }
+    
     func fetchDefaultMovies(){
         Task{
             do{
-                let fetchedMovies = try await TMDBAPIService.shared.fetchDefaultMovies()
+                let fetchedMovies = try await self.api.fetchDefaultMovies()
                 DispatchQueue.main.async{
                     self.movies = fetchedMovies
                 }
@@ -45,7 +51,7 @@ class MovieListViewModel: ObservableObject{
         searchWork = DispatchWorkItem {
             Task{
                 do{
-                    let fetchedMovies = try await TMDBAPIService.shared.search(with: self.searchKeyword)
+                    let fetchedMovies = try await self.api.search(with: self.searchKeyword)
                     print(fetchedMovies.map(\.title))
                     DispatchQueue.main.async{
                         self.movies = fetchedMovies

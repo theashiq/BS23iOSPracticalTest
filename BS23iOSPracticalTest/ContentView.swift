@@ -10,7 +10,7 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         NavigationStack{
-            MovieListView(viewModel: MovieListViewModel())
+            MovieListView(viewModel: MovieListViewModel(api: TMDB_APIService.shared))
                 .listStyle(.plain)
                 .navigationTitle("Movie List")
         }
