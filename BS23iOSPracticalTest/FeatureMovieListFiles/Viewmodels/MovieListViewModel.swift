@@ -18,6 +18,15 @@ class MovieListViewModel: ObservableObject{
         }
     }
     
+    var showEmptyView : Bool {
+        movies.isEmpty && !searchKeyword.isEmpty
+    }
+    var showSearchHint : Bool {
+        movies.isEmpty && searchKeyword.isEmpty
+    }
+    
+    private var searchWork: DispatchWorkItem?
+    
     func fetchDefaultMovies(){
         Task{
             do{
@@ -35,13 +44,20 @@ class MovieListViewModel: ObservableObject{
             return
         }
         
-        Task{
-            do{
-                self.movies = try await TMDBAPIService.shared.search(with: self.searchKeyword)
+        searchWork?.cancel()
+        searchWork = DispatchWorkItem {
+            print("starting search for \(self.searchKeyword)")
+            Task{
+                do{
+                    self.movies = try await TMDBAPIService.shared.search(with: self.searchKeyword)
+                }
+                catch{
+                    print(error.localizedDescription)
+                }
             }
-            catch{
-                print(error.localizedDescription)
-            }
+        }
+        if let searchWork{
+            DispatchQueue.global(qos: .userInitiated).asyncAfter(deadline: .now() + 1, execute: searchWork)
         }
     }
     
