@@ -10,15 +10,41 @@ import Foundation
 class MovieListViewModel: ObservableObject{
     @Published var movies: [MovieListItemViewModel] = []
     
-    func fetchMovies(){
+    @Published var searchKeyword: String = ""{
+        didSet{
+            if searchKeyword.count > 2{
+                search()
+            }
+        }
+    }
+    
+    func fetchDefaultMovies(){
         Task{
             do{
-                let fetchedMovies = try await TMDBAPIService.shared.fetch()
+                let fetchedMovies = try await TMDBAPIService.shared.search(with: "Marvel")
                 DispatchQueue.main.async{
                     self.movies = fetchedMovies
                 }
             }
         }
     }
+    
+    private func search(){
+        
+        guard searchKeyword.count >= 3 else{
+            return
+        }
+        
+        Task{
+            do{
+                self.movies = try await TMDBAPIService.shared.search(with: self.searchKeyword)
+            }
+            catch{
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    
     
 }
