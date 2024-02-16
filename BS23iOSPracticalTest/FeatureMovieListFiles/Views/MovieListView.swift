@@ -19,6 +19,14 @@ struct MovieListView: View {
             viewModel.fetchDefaultMovies()
         }
         .searchable(text: $viewModel.searchKeyword)
+        .overlay{
+            if viewModel.showEmptyView {
+                ContentUnavailableView.search(text: viewModel.searchKeyword)
+            }
+            else if viewModel.showSearchHint{
+                ContentUnavailableView.init("Enter Movie Titles", systemImage: "magnifyingglass", description: Text("Enter movie title in the search field"))
+            }
+        }
     }
 }
 

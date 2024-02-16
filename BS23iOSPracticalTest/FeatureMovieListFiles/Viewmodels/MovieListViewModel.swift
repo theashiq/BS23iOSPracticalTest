@@ -18,6 +18,13 @@ class MovieListViewModel: ObservableObject{
         }
     }
     
+    var showEmptyView : Bool {
+        movies.isEmpty && !searchKeyword.isEmpty
+    }
+    var showSearchHint : Bool {
+        movies.isEmpty && searchKeyword.isEmpty
+    }
+    
     func fetchDefaultMovies(){
         Task{
             do{
