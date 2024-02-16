@@ -28,16 +28,8 @@ struct MovieListItemView: View {
     }
     
     private var imageView : some View {
-        AsyncImage(url: URL(string: viewModel.posterImageUrl)) { image in
-            image
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-        } placeholder: {
-            Image(systemName: "popcorn")
-                .renderingMode(.template)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-        }
+        CustomAsyncImageView(urlString: viewModel.posterImageUrl, placeHolder: "popcorn")
+        .aspectRatio(contentMode: .fit)
         .frame(maxWidth: 60)
     }
 }
