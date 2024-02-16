@@ -16,8 +16,9 @@ struct MovieListView: View {
             }
         }
         .onAppear{
-            viewModel.fetchMovies()
+            viewModel.fetchDefaultMovies()
         }
+        .searchable(text: $viewModel.searchKeyword)
     }
 }
 
